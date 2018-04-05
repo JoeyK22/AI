@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-
 namespace GoneHome
 {
     public class Goal : MonoBehaviour
     {
         public UnityEvent onGoal;
 
-       void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
-            if(other.name.Contains("Player"))
+            // When player enters goal
+            if (other.name.Contains("Player"))
             {
+                // Call event
                 onGoal.Invoke();
             }
         }

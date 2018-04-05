@@ -3,36 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 namespace GoneHome
-{
+{ 
     public class GameManager : MonoBehaviour
     {
 
         public void NextLevel()
         {
-            Scene currentScene = SceneManager.GetActiveScene();         //gets the current active scene
-            SceneManager.LoadScene(currentScene.buildIndex + 1);        //Load Next scene inthe build
+            // Get the current active scene
+            Scene currentScene = SceneManager.GetActiveScene();
+            // Load the next build index
+            SceneManager.LoadScene(currentScene.buildIndex + 1);
         }
 
         public void RestartLevel()
         {
-            //gets the current active scene
-            //loads the current scene in the build index
-            //grab player in the scene
-            //reset player
-            FollowEnemy[] followEnemies = FindObjectsOfType<FollowEnemy>();
-            PatrolEnemy[] patrolEnemies = FindObjectsOfType<PatrolEnemy>();
+            // Grab all enemies in the scene into array
+            Follow_Enemy[] followEnemies = FindObjectsOfType<Follow_Enemy>();
+            Patrol_Enemy[] patrolEnemies = FindObjectsOfType<Patrol_Enemy>();
 
+            // Loop through all enemies
             foreach (var enemy in followEnemies)
+            {
+                // Reset enemy
+                enemy.Reset();
+            }
+
+            foreach (var enemy in patrolEnemies)
             {
                 enemy.Reset();
             }
 
+            // Grab player in the scene
             Player player = FindObjectOfType<Player>();
-
+            // reset player
             player.Reset();
         }
-
 
 
     }

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace GoneHome
 {
     [RequireComponent(typeof(ParticleSystem))]
     public class DestroyOnFinish : MonoBehaviour
     {
-        private ParticleSystem ps;
 
+        private ParticleSystem ps;
 
         // Use this for initialization
         void Start()
@@ -20,7 +19,7 @@ namespace GoneHome
         // Update is called once per frame
         void Update()
         {
-            if(ps != null && ps.isPlaying == false)
+            if (ps != null && !ps.isPlaying)
             {
                 Destroy(gameObject);
             }

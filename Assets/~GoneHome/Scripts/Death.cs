@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GoingHome
+namespace GoneHome
 {
     public class Death : MonoBehaviour
     {
-
         public UnityEvent onDeath;
+        
 
+        // Detect collision with other triggers
         void OnTriggerEnter(Collider other)
         {
-            // Have we hit a 'DeathZone' OR 'Enemy'?
-            if (other.name.Contains ("DeathZone") ||
-                other.name.Contains ("Enemy"))
+            // Have we hit a death zone or an enemy
+            if (other.name == "DeathZone" || other.name == "Enemy")
             {
-                // KILL IT!
+                // Kill object
                 onDeath.Invoke();
             }
         }
+
     }
 }
